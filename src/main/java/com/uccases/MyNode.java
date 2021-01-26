@@ -1,7 +1,7 @@
 package com.uccases;
 
-public class MyNode<K> {
-    private  MyNode next;
+public class MyNode<K> implements INode<K>{
+    private INode next;
     private K key;
 
     public MyNode(K key) {
@@ -9,11 +9,11 @@ public class MyNode<K> {
         this.next = null;
     }
 
-    public MyNode getNext() {
+    public INode getNext() {
         return next;
     }
 
-    public void setNext(MyNode next) {
+    public void setNext(INode next) {
         this.next = next;
     }
 
