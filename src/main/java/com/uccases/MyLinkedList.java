@@ -1,6 +1,6 @@
 package com.uccases;
 
-public class MyLinkedList {
+public class MyLinkedList<K> {
     public  INode head;
     public  INode tail;
 
@@ -63,15 +63,23 @@ public class MyLinkedList {
         tempNode = tempNode.getNext();
         return tempNode;
     }
-    public <K> boolean search(K key )
-    {
-        INode tempNode = head;
-        while (tempNode != null )
-        {
-            if (tempNode.getKey().equals(key))
-                return true;
+    public INode search(K key){
+        INode tempNode = this.head;
+        while (tempNode != null && tempNode.getNext() != null) {
+            if (tempNode.getKey().equals(key)) {
+                return tempNode;
+            }
             tempNode = tempNode.getNext();
         }
-        return false;
+        return null;
+    }
+    public <K> INode delete(K key) {
+        INode<K> tempNode = this.head;
+        while (tempNode.getNext().getKey()!= key ){
+            tempNode = tempNode.getNext();
+        }
+        INode deleteNode = tempNode.getNext();
+        tempNode.setNext(tempNode.getNext().getNext());
+        return deleteNode;
     }
 }
